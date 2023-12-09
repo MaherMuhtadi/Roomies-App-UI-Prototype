@@ -1,0 +1,31 @@
+#home-tab > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#home-tab .housemate {
+    text-align: center;
+    height: 6.25rem;
+    width: 6.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.1s;
+}
+
+#home-tab .housemate img {
+    width: 3rem;
+}
+
+#home-tab .housemate .avatar {
+    margin-top: 0.5rem;
+}
+
+#home-tab .housemate h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+#home-tab .housemate:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}

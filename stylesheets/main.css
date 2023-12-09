@@ -1,0 +1,127 @@
+:root {
+    --phone-border: black;
+    --pen-color: #00308F;
+    --sticky-note-color: rgb(252, 252, 136);
+    --positive-color: rgb(170, 248, 170);
+    --negative-color: rgb(251, 164, 164);
+    --positive-button-color: rgb(42, 117, 41);
+    --negative-button-color: rgb(206, 55, 55);
+    --checkbox-border: black;
+    --bar-color: rgb(236, 234, 234);
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --alert-color: rgb(215, 250, 244);
+    --avatar-background: white;
+    --table-header-color: rgb(251, 170, 123);
+    --table-row-color-light: rgb(252, 224, 206);
+    --table-row-color-dark: rgb(252, 206, 177);
+}
+
+* {
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+:not(:is(h1, h2, h3, h4, h5, h6)) {
+    font-size: 1.1rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 35vw;
+    height: 47vw;
+    min-width: 384px;
+    min-height: 512px;
+    border: solid 6px var(--phone-border);
+    border-top: 24px solid var(--phone-border);
+    border-bottom: 36px solid var(--phone-border);
+    border-radius: 1rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+main::-webkit-scrollbar {
+    display: none;
+}
+
+.avatar {
+    background-color: var(--avatar-background);
+    border-radius: 50%;
+}
+
+.tab {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.tab-components {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+button, input[type=button], input[type=reset] {
+    margin-right: 0.5rem;
+    border: 1.5px solid;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.positive-button {
+    color: var(--positive-button-color);
+    border: 1.5px solid var(--positive-button-color);
+}
+
+.negative-button {
+    color: var(--negative-button-color);
+    border: 1.5px solid var(--negative-button-color);
+}
+
+button:active, input[type=button]:active, input[type=reset]:active {
+    transform: scale(0.8);
+}
+
+button:hover, input[type=button]:hover, input[type=reset]:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+input[type=checkbox]:hover, input[type=radio]:hover, summary:hover {
+    cursor: pointer;
+}
+
+input:not(input[type=button], input[type=reset]), textarea, select {
+    color: var(--pen-color);
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+label {
+    margin-top: 0.5rem;
+}

@@ -1,0 +1,106 @@
+#chores-tab h4 {
+    display: inline;
+    margin: 0.25rem;
+}
+
+#chores-tab form {
+    display: flex;
+    flex-direction: column;
+}
+
+#chores-tab .completed-chore {
+    background-color: var(--positive-color);
+}
+
+#chores-tab .unassigned-chore {
+    background-color: var(--negative-color);
+}
+
+#chores-tab details {
+    background-color: var(--sticky-note-color);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.1s;
+}
+
+#chores-tab details:not([open]):hover {
+    transform: scale(1.025);
+    box-shadow: 2px 2px 2px var(--shadow-color);
+}
+
+#chores-tab details[open] {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 95% 100%, 0% 100%);
+}
+
+#chores-tab summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chores-tab summary > h4::before {
+    content: url("../assets/down-arrow-icon.svg");
+}
+
+#chores-tab details[open] summary > h4::before {
+    content: url("../assets/up-arrow-icon.svg");
+}
+
+#chores-tab .assignees-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 1rem;
+}
+
+#chores-tab figure {
+    text-align: center;
+    margin: 0.25rem;
+}
+
+#chores-tab .avatar {
+    width: 3rem;
+}
+
+#chores-tab summary div:has(.avatar){
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+}
+
+#chores-tab details[open] summary div:has(.avatar) {
+    display: none;
+}
+
+#chores-tab summary .avatar {
+    width: 1.5rem;
+    margin-right: 0.25rem;
+}
+
+#chores-tab .checkboxes > label {
+    border-radius: 1rem;
+    border: solid 1px var(--checkbox-border);
+    margin: 0.25rem;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+#chores-tab .checkboxes > label:hover {
+    cursor: pointer;
+}
+
+#chores-tab .checkboxes > label:has(input[type=checkbox]:checked), #chores-tab .checkboxes > label:has(input[type=radio]:checked) {
+    border: solid 2.5px var(--pen-color);
+}
+
+#chores-tab .checkboxes input[type=checkbox], #chores-tab .checkboxes input[type=radio] {
+    display: none;
+}
+
+#chores-tab input[type=radio] {
+    margin-left: 1rem;
+}
+
+#chores-tab select {
+    margin-right: 0.5rem;
+}

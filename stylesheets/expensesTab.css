@@ -1,0 +1,106 @@
+#expenses-tab h4 {
+    margin-top: 0rem;
+    margin-bottom: 0.75rem;
+}
+
+#expenses-tab .budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#expPupEl {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 30vw;
+    height: min-content;
+    min-width: 200px;
+    border: 1px solid black;
+}
+  
+#expCloseBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+}
+
+#expPupContent {
+    padding: 1rem;
+}
+
+#expenses-tab .expInput{
+    padding-top: 2px;
+}
+
+#tableContainer {
+    max-height: 200px; /* Adjust the height as needed */
+    width: fit-content;
+    overflow-y: auto;
+    margin: auto;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--table-header-color);
+}
+
+#expenses-tab table {
+    border: 1.5px solid var(--table-header-color);
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#expenses-tab td, th {
+    padding: 8px;
+    max-width: 15vw;
+    word-wrap: break-word;
+}
+
+#expenses-tab th {
+    background-color: var(--table-header-color);
+}
+
+#expenses-tab td {
+    border-left: 1.5px solid var(--table-header-color);
+    border-right: 1.5px solid var(--table-header-color);
+}
+
+#expenses-tab tr:nth-child(even) {
+    background-color: var(--table-row-color-dark);
+}
+
+#expenses-tab tr:nth-child(odd) {
+    background-color: var(--table-row-color-light);
+}
+
+#expenses-tab .checkboxes > label {
+    border-radius: 1rem;
+    border: solid 1px var(--checkbox-border);
+    margin: 0.25rem;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+#expenses-tab .checkboxes > label:has(input[type=checkbox]:checked), #expenses-tab .checkboxes > label:has(input[type=radio]:checked) {
+    border: solid 2px var(--pen-color);
+}
+
+#expenses-tab .checkboxes input[type=checkbox], #expenses-tab .checkboxes input[type=radio] {
+    display: none;
+}
+
+#expenses-tab .checkboxes > label:hover {
+    cursor: pointer;
+}
+
+#expenses-tab input {
+    margin: 0.5rem;
+}
+
+#addEntryBtn {
+    margin-top: 0.5rem;
+}
