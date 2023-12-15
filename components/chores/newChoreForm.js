@@ -72,6 +72,7 @@ class newChoreForm {
     }
 
     static _resetData() {
+        this.form.reset();
         newChoreForm._formData = {
             name: "",
             description: "",
@@ -82,7 +83,6 @@ class newChoreForm {
             numberOfPeople: 1,
             notes: "",
         };
-        this.form.reset();
         this.form.querySelector(
             "select[name='frequency']"
         ).children[1].selected = true;
