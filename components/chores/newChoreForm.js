@@ -82,7 +82,11 @@ class newChoreForm {
             numberOfPeople: 1,
             notes: "",
         };
-        newChoreForm._setDaysRestriction("");
+        this.form.reset();
+        this.form.querySelector(
+            "select[name='frequency']"
+        ).children[1].selected = true;
+        this.form.querySelector("input[name='numberOfPeople']").value = 1;
     }
 
     static _nameSelect() {
@@ -276,7 +280,7 @@ class newChoreForm {
         clear.addEventListener("click", () => {
             newChoreForm._resetData();
         });
-        clear.type = "reset";
+        clear.type = "button";
         clear.value = "Clear";
         clear.classList.add("negative-button");
         div.appendChild(submit);
@@ -300,6 +304,7 @@ class newChoreForm {
             newChoreForm.toggleNameOption(newChoreForm._formData.name, "none");
             window.alert("Chore added successfully!");
             newChoreForm._parent.newChoreFormToggle();
+            newChoreForm._resetData();
         } else {
             window.alert("Please fill in all the fields with * in the label!");
         }
