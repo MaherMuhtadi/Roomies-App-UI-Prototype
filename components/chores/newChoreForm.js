@@ -75,7 +75,7 @@ class newChoreForm {
         newChoreForm._formData = {
             name: "",
             description: "",
-            frequency: "",
+            frequency: "Weekly",
             days: [],
             duration: 0,
             deadline: "",
