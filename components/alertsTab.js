@@ -3,23 +3,23 @@ class alertsTab extends tab {
         super(title, id, svgPath, parent, active);
         let tab = document.getElementById(id);
         let div = document.createElement("div");
-        let alert1 = this._reminder1();
-        let alert2 = this._tradeRequest();
-        let alert3 = this._reminder2();
-        alert1.style.display = "none";
+        this.alert1 = this._reminder1();
+        this.alert2 = this._tradeRequest();
+        this.alert3 = this._reminder2();
+        this.alert1.style.display = "none";
         let redDot = document.createElement("div");
         redDot.classList.add("red-dot");
         setTimeout(() => {
-            alert1.style.display = "block";
+            this.alert1.style.display = "block";
             this._ping(navButtonId, redDot);
         }, 30000);
-        alert1.addEventListener("click", () => {
+        this.alert1.addEventListener("click", () => {
             redDot.remove();
-            alert1.classList.remove("new-alert");
+            this.alert1.classList.remove("new-alert");
         });
-        div.appendChild(alert1);
-        div.appendChild(alert2);
-        div.appendChild(alert3);
+        div.appendChild(this.alert1);
+        div.appendChild(this.alert2);
+        div.appendChild(this.alert3);
         tab.appendChild(div);
     }
 
@@ -46,11 +46,18 @@ class alertsTab extends tab {
         let buttons = document.createElement("div");
         let confirm = document.createElement("button");
         confirm.innerHTML = "Confirm Completion";
+        confirm.addEventListener("click", () => {
+            window.alert(
+                "Your housemates will be notified of your completion."
+            );
+            this.alert1.remove();
+        });
         confirm.classList.add("positive-button");
         let extension = document.createElement("button");
         extension.innerHTML = "Request Extension";
         extension.addEventListener("click", () => {
             window.alert("Your housemates will process your request shortly.");
+            this.alert1.remove();
         });
         buttons.appendChild(confirm);
         buttons.appendChild(extension);
@@ -75,10 +82,17 @@ class alertsTab extends tab {
         let confirm = document.createElement("button");
         confirm.innerHTML = "Confirm Completion";
         confirm.classList.add("positive-button");
+        confirm.addEventListener("click", () => {
+            window.alert(
+                "Your housemates will be notified of your completion."
+            );
+            this.alert3.remove();
+        });
         let extension = document.createElement("button");
         extension.innerHTML = "Request Extension";
         extension.addEventListener("click", () => {
             window.alert("Your housemates will process your request shortly.");
+            this.alert3.remove();
         });
         buttons.appendChild(confirm);
         buttons.appendChild(extension);
@@ -105,12 +119,14 @@ class alertsTab extends tab {
             window.alert(
                 "Your housemates will be notified of your acceptance."
             );
+            this.alert2.remove();
         });
         accept.classList.add("positive-button");
         let reject = document.createElement("button");
         reject.innerHTML = "Reject";
         reject.addEventListener("click", () => {
             window.alert("Your housemates will be notified of your rejection.");
+            this.alert2.remove();
         });
         reject.classList.add("negative-button");
         buttons.appendChild(accept);
