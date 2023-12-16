@@ -3,6 +3,12 @@
     margin: 0.25rem;
 }
 
+#chores-tab .bar {
+    border: 1px solid var(--phone-border);
+    height: 1rem;
+    background-color: var(--bar-chart-color);
+}
+
 #chores-tab form {
     display: flex;
     flex-direction: column;

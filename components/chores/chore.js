@@ -1,4 +1,6 @@
 class chore {
+    static _chores = [];
+
     // Static variable to store the frequency and its corresponding effort value
     // 7/2 is used to account for the fact that the number of days selected could be any from 1 to 7
     static _frequencies = {
@@ -44,6 +46,7 @@ class chore {
         this.component.appendChild(this.descriptionView);
         this.component.appendChild(this.assignmentForm);
         this.component.appendChild(this.editForm);
+        chore._chores.push(this);
         this._placeComponent();
     }
 
@@ -174,6 +177,42 @@ class chore {
         });
         descriptionView.appendChild(deleteButton);
         return descriptionView;
+    }
+
+    _renderDistribution() {
+        let totalChores = chore._chores.length;
+        let assignedChores = 0;
+        let housematesAssignments = {};
+        this.housemates.forEach((housemate) => {
+            housematesAssignments[housemate] = 0;
+        });
+        chore._chores.forEach((chore) => {
+            chore.assignees.forEach((assignee) => {
+                housematesAssignments[assignee]++;
+            });
+            if (chore.assignees.length > 0) {
+                assignedChores++;
+            }
+        });
+
+        let distribution = document.getElementById("chores-distribution");
+        distribution.innerHTML = "";
+        let heading = document.createElement("div");
+        heading.innerHTML = `<h4>Total Chores: ${totalChores}, Assigned Chores: ${assignedChores}</h4>`;
+        heading.style.textAlign = "center";
+        distribution.appendChild(heading);
+        for (let housemate in housematesAssignments) {
+            let distributionItem = document.createElement("div");
+            distributionItem.style.width = "100%";
+            let bar = document.createElement("div");
+            bar.classList.add("bar");
+            bar.style.width = `${
+                (housematesAssignments[housemate] / totalChores) * 100
+            }%`;
+            distributionItem.innerHTML = `<strong>${housemate}:</strong> ${housematesAssignments[housemate]} Chores<br>`;
+            distributionItem.appendChild(bar);
+            distribution.appendChild(distributionItem);
+        }
     }
 
     _editForm() {
@@ -403,6 +442,7 @@ class chore {
         } else {
             choresTab.getUnassignedLabel().appendChild(this.component);
         }
+        this._renderDistribution();
     }
 
     _delete() {
@@ -411,6 +451,8 @@ class chore {
         );
         if (confirmation) {
             this.component.remove();
+            chore._chores.splice(chore._chores.indexOf(this), 1);
+            this._renderDistribution();
             newChoreForm.toggleNameOption(this.name, "block");
         }
     }

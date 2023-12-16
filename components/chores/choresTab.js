@@ -24,10 +24,23 @@ class choresTab extends tab {
         this.unassigned = document.createElement("div");
         this.choresViewDiv = this._choresView();
         this.newChoreForm = newChoreForm.form(this, housemates);
+        this.choresDistribution = this._choresDistribution();
         this._addClass("tab-components");
+        tab.appendChild(this.choresDistribution);
         tab.appendChild(this.div);
         tab.appendChild(this.choresViewDiv);
         tab.appendChild(this.newChoreForm);
+    }
+
+    _choresDistribution() {
+        let div = document.createElement("div");
+        let heading = document.createElement("h2");
+        heading.innerHTML = "Chores Distribution";
+        div.appendChild(heading);
+        let distribution = document.createElement("div");
+        distribution.id = "chores-distribution";
+        div.appendChild(distribution);
+        return div;
     }
 
     _choresView() {
@@ -87,11 +100,13 @@ class choresTab extends tab {
             this.addChoreButton.innerHTML = "Back";
             this.newChoreForm.style.display = "flex";
             this.choresViewDiv.style.display = "none";
+            this.choresDistribution.style.display = "none";
             this.heading.innerHTML = "New Chore";
         } else {
             this.addChoreButton.innerHTML = "Add New Chore";
             this.newChoreForm.style.display = "none";
             this.choresViewDiv.style.display = "block";
+            this.choresDistribution.style.display = "block";
             this.heading.innerHTML = "Chores List";
         }
     }
@@ -127,6 +142,7 @@ class choresTab extends tab {
         this.div.classList.add(className);
         this.choresViewDiv.classList.add(className);
         this.newChoreForm.classList.add(className);
+        this.choresDistribution.classList.add(className);
     }
 
     static getUnassignedLabel() {
